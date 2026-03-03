@@ -1,7 +1,7 @@
-from src.builders.fighting_balls_builder.video_generator import run_preview, run_headless
+from src.pipeline.pipeline import build_and_upload_short
 
 
-
-
-run_preview(n_balls=6)
-# run_headless(n_balls=6, output="output.mp4")
+build_and_upload_short(
+    title="Fighting Simulation",
+    n_balls=6,
+)

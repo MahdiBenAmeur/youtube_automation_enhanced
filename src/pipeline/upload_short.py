@@ -12,7 +12,7 @@ from googleapiclient.http import MediaFileUpload
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 YOUTUBE_UPLOAD_SCOPE = "https://www.googleapis.com/auth/youtube.upload"
-DEFAULT_CLIENT_SECRETS_FILE = Path("client_secrets.json")
+DEFAULT_CLIENT_SECRETS_DIR = Path("src/core")
 DEFAULT_TOKEN_FILE = Path("youtube_token.json")
 DEFAULT_UPLOAD_COUNT_FILE = Path("uploaded_videos_count.json")
 
@@ -119,7 +119,14 @@ def get_youtube_client() -> Any:
 
 def get_client_secrets_file() -> Path:
     value = os.getenv("YOUTUBE_CLIENT_SECRETS_FILE")
-    return Path(value) if value else DEFAULT_CLIENT_SECRETS_FILE
+    if value:
+        return Path(value)
+
+    matches = sorted(DEFAULT_CLIENT_SECRETS_DIR.glob("client_secret*.json"))
+    if matches:
+        return matches[0]
+
+    return DEFAULT_CLIENT_SECRETS_DIR / "client_secrets.json"
 
 
 def get_token_file() -> Path:
