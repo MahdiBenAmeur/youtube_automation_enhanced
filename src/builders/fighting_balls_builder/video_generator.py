@@ -54,8 +54,8 @@ CFG = {
     "radius_max": 42,
     "speed_min": 400.0,        # px/frame
     "speed_max": 800.0,
-    "speed_absolute_min": 400.5,
-    "speed_absolute_max": 2200.0,
+    "speed_absolute_min": 700.5,
+    "speed_absolute_max": 3000.0,
     "restitution_wall": 0.92,
     "restitution_ball": 0.92,
     "hp": 100,
