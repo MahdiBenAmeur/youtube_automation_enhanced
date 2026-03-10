@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from src.builders.fighting_balls_builder.video_generator import run_headless
+from src.builders.fighting_balls_builder.video_generator_power import run_headless
 from src.pipeline.upload_short import upload_short
 
 

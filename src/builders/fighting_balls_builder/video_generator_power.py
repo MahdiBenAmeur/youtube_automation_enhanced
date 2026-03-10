@@ -58,7 +58,7 @@ CFG = {
     "speed_absolute_max": 2200.0,
     "restitution_wall": 0.92,
     "restitution_ball": 0.92,
-    "hp": 100,
+    "hp": 150,
 
     # Bullets
     "fire_cooldown_min": 1,
