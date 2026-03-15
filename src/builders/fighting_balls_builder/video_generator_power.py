@@ -54,18 +54,18 @@ CFG = {
     "radius_max": 42,
     "speed_min": 400.0,
     "speed_max": 800.0,
-    "speed_absolute_min": 400.5,
+    "speed_absolute_min": 1000.5,
     "speed_absolute_max": 2200.0,
     "restitution_wall": 0.92,
     "restitution_ball": 0.92,
     "hp": 150,
 
     # Bullets
-    "fire_cooldown_min": 1,
-    "fire_cooldown_max": 1.4,
+    "fire_cooldown_min": 0.7,
+    "fire_cooldown_max": 1,
     "bullet_damage_min": 8,
     "bullet_damage_max": 14,
-    "bullet_speed": 15.0,
+    "bullet_speed": 25.0,
     "bullet_radius": 5,
     "bullet_lifetime": 90,
     "max_bullets": 200,
@@ -73,9 +73,9 @@ CFG = {
 
     # Power-ups
     "powerup_spawn_interval_min": 1.8,
-    "powerup_spawn_interval_max": 3.5,
-    "powerup_max": 3,
-    "powerup_radius": 30,
+    "powerup_spawn_interval_max": 2.5,
+    "powerup_max": 4,
+    "powerup_radius": 35,
 
     # Physics
     "substeps": 3,
