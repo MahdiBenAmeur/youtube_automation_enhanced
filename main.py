@@ -1,7 +1,4 @@
-from src.pipeline.pipeline import build_and_upload_short
+from src.pipeline.pipeline import build_and_upload_ai_car_driving_short; 
 
 
-build_and_upload_short(
-    title="Fighting Simulation",
-    n_balls=6,
-)
+build_and_upload_ai_car_driving_short()

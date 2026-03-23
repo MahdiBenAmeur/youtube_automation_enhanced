@@ -1,8 +1,8 @@
-name: Run Every 3 Hours
+name: Run Every 5 Hours
 
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "0 */5 * * *"
   workflow_dispatch:
 
 jobs:
@@ -39,8 +39,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run upload pipeline
-        run: python main.py
+      - name: Run AI car driving upload pipeline
+        run: python -c "from src.pipeline.pipeline import build_and_upload_ai_car_driving_short; print(build_and_upload_ai_car_driving_short())"
 
       - name: Commit updated upload count
         shell: bash

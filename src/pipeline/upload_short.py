@@ -5,26 +5,26 @@ import os
 from pathlib import Path
 from typing import Any
 
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
-from google_auth_oauthlib.flow import InstalledAppFlow
-
 YOUTUBE_UPLOAD_SCOPE = "https://www.googleapis.com/auth/youtube.upload"
 DEFAULT_CLIENT_SECRETS_DIR = Path("src/core")
 DEFAULT_TOKEN_FILE = Path("youtube_token.json")
 DEFAULT_UPLOAD_COUNT_FILE = Path("uploaded_videos_count.json")
 
 
-def upload_short(video_path: str | Path, title: str) -> dict[str, Any]:
+def upload_short(
+    video_path: str | Path,
+    title: str,
+    description: str | None = None,
+) -> dict[str, Any]:
     source_path = Path(video_path)
     if not source_path.is_file():
         raise FileNotFoundError(f"Video file not found: {source_path}")
 
     upload_number = get_uploaded_video_count() + 1
-    description = f"fighting simulation {upload_number}"
+    if description is None:
+        description = f"fighting simulation {upload_number}"
     youtube = get_youtube_client()
+    from googleapiclient.http import MediaFileUpload
 
     request = youtube.videos().insert(
         part="snippet,status",
@@ -55,8 +55,8 @@ def upload_short(video_path: str | Path, title: str) -> dict[str, Any]:
     }
 
 
-def run(video_path: str, title: str) -> dict[str, Any]:
-    return upload_short(video_path=video_path, title=title)
+def run(video_path: str, title: str, description: str | None = None) -> dict[str, Any]:
+    return upload_short(video_path=video_path, title=title, description=description)
 
 
 def get_uploaded_video_count() -> int:
@@ -88,8 +88,13 @@ def get_upload_count_file() -> Path:
 
 
 def get_youtube_client() -> Any:
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from googleapiclient.discovery import build
+    from google_auth_oauthlib.flow import InstalledAppFlow
+
     token_file = get_token_file()
-    creds: Credentials | None = None
+    creds: Any | None = None
 
     if token_file.exists():
         creds = Credentials.from_authorized_user_file(
