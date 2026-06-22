@@ -1,4 +1,3 @@
-from src.pipeline.pipeline import build_and_upload_ai_car_driving_short; 
+from src.pipeline.upload_random_short import upload_random_short
 
-
-build_and_upload_ai_car_driving_short()
+upload_random_short()
